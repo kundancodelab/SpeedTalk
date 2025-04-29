@@ -6,6 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CE16D52B2DBEB1FE00A2FCB1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D52A2DBEB1FE00A2FCB1 /* FirebaseAuth */; };
+		CE16D52D2DBEB1FE00A2FCB1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D52C2DBEB1FE00A2FCB1 /* FirebaseCore */; };
+		CE16D52F2DBEB1FE00A2FCB1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D52E2DBEB1FE00A2FCB1 /* FirebaseCrashlytics */; };
+		CE16D5312DBEB1FE00A2FCB1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D5302DBEB1FE00A2FCB1 /* FirebaseDatabase */; };
+		CE16D5332DBEB1FE00A2FCB1 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D5322DBEB1FE00A2FCB1 /* FirebaseDynamicLinks */; };
+		CE16D5352DBEB1FE00A2FCB1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D5342DBEB1FE00A2FCB1 /* FirebaseFirestore */; };
+		CE16D5372DBEB1FE00A2FCB1 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D5362DBEB1FE00A2FCB1 /* FirebaseFunctions */; };
+		CE16D5392DBEB1FE00A2FCB1 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D5382DBEB1FE00A2FCB1 /* FirebaseInAppMessaging-Beta */; };
+		CE16D53B2DBEB1FE00A2FCB1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D53A2DBEB1FE00A2FCB1 /* FirebaseMessaging */; };
+		CE16D53D2DBEB1FE00A2FCB1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D53C2DBEB1FE00A2FCB1 /* FirebaseStorage */; };
+		CE16D5402DBEB22A00A2FCB1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE16D53F2DBEB22A00A2FCB1 /* IQKeyboardManagerSwift */; };
+		CEAF66662DBEC98500065B63 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = CEAF66652DBEC98500065B63 /* MBProgressHUD */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CE609E232DB42E480004013D /* SpeedTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +51,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE16D53B2DBEB1FE00A2FCB1 /* FirebaseMessaging in Frameworks */,
+				CE16D52F2DBEB1FE00A2FCB1 /* FirebaseCrashlytics in Frameworks */,
+				CE16D5372DBEB1FE00A2FCB1 /* FirebaseFunctions in Frameworks */,
+				CE16D53D2DBEB1FE00A2FCB1 /* FirebaseStorage in Frameworks */,
+				CE16D52D2DBEB1FE00A2FCB1 /* FirebaseCore in Frameworks */,
+				CE16D5392DBEB1FE00A2FCB1 /* FirebaseInAppMessaging-Beta in Frameworks */,
+				CEAF66662DBEC98500065B63 /* MBProgressHUD in Frameworks */,
+				CE16D5312DBEB1FE00A2FCB1 /* FirebaseDatabase in Frameworks */,
+				CE16D52B2DBEB1FE00A2FCB1 /* FirebaseAuth in Frameworks */,
+				CE16D5332DBEB1FE00A2FCB1 /* FirebaseDynamicLinks in Frameworks */,
+				CE16D5402DBEB22A00A2FCB1 /* IQKeyboardManagerSwift in Frameworks */,
+				CE16D5352DBEB1FE00A2FCB1 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +105,18 @@
 			);
 			name = SpeedTalk;
 			packageProductDependencies = (
+				CE16D52A2DBEB1FE00A2FCB1 /* FirebaseAuth */,
+				CE16D52C2DBEB1FE00A2FCB1 /* FirebaseCore */,
+				CE16D52E2DBEB1FE00A2FCB1 /* FirebaseCrashlytics */,
+				CE16D5302DBEB1FE00A2FCB1 /* FirebaseDatabase */,
+				CE16D5322DBEB1FE00A2FCB1 /* FirebaseDynamicLinks */,
+				CE16D5342DBEB1FE00A2FCB1 /* FirebaseFirestore */,
+				CE16D5362DBEB1FE00A2FCB1 /* FirebaseFunctions */,
+				CE16D5382DBEB1FE00A2FCB1 /* FirebaseInAppMessaging-Beta */,
+				CE16D53A2DBEB1FE00A2FCB1 /* FirebaseMessaging */,
+				CE16D53C2DBEB1FE00A2FCB1 /* FirebaseStorage */,
+				CE16D53F2DBEB22A00A2FCB1 /* IQKeyboardManagerSwift */,
+				CEAF66652DBEC98500065B63 /* MBProgressHUD */,
 			);
 			productName = SpeedTalk;
 			productReference = CE609E232DB42E480004013D /* SpeedTalk.app */;
@@ -107,6 +146,11 @@
 			);
 			mainGroup = CE609E1A2DB42E480004013D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CE16D53E2DBEB22A00A2FCB1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				CEAF66642DBEC98500065B63 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE609E242DB42E480004013D /* Products */;
 			projectDirPath = "";
@@ -335,6 +379,96 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+		CE16D53E2DBEB22A00A2FCB1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.1;
+			};
+		};
+		CEAF66642DBEC98500065B63 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE16D52A2DBEB1FE00A2FCB1 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CE16D52C2DBEB1FE00A2FCB1 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		CE16D52E2DBEB1FE00A2FCB1 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		CE16D5302DBEB1FE00A2FCB1 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		CE16D5322DBEB1FE00A2FCB1 /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDynamicLinks;
+		};
+		CE16D5342DBEB1FE00A2FCB1 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		CE16D5362DBEB1FE00A2FCB1 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		CE16D5382DBEB1FE00A2FCB1 /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		CE16D53A2DBEB1FE00A2FCB1 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		CE16D53C2DBEB1FE00A2FCB1 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D5292DBEB1FE00A2FCB1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		CE16D53F2DBEB22A00A2FCB1 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE16D53E2DBEB22A00A2FCB1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		CEAF66652DBEC98500065B63 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEAF66642DBEC98500065B63 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE609E1B2DB42E480004013D /* Project object */;
 }

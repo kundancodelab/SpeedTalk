@@ -36,7 +36,7 @@ class EntryVC: UIViewController {
     
     
     @IBAction func didTapGetStartedBtn(_ sender: UIButton) {
-        let vc = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "LoginVC" ) as! LoginVC
+        let vc = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "SignUpVC" ) as! SignUpVC
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
