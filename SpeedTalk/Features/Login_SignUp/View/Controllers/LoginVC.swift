@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FirebaseAuth
+import Firebase
 
 class LoginVC: UIViewController {
+    private let googleAuthVM = GoogleAuthViewModel()
     @IBOutlet weak var loginBtnView: UIView!{
         didSet {
             loginBtnView.layer.cornerRadius = 8
@@ -35,6 +39,11 @@ class LoginVC: UIViewController {
     @IBAction func didTapBackBtn(_ sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func didTapGoogleLoginBtn(_ sender: UIButton) {
+        handleGoogleLogin()
+    }
+
 }
 
 extension LoginVC {
@@ -56,6 +65,32 @@ extension LoginVC {
         passwordTF.isSecureTextEntry = true
         passwordTF.textContentType = .newPassword
         }
+  private  func handleGoogleLogin() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            print(" Missing Firebase Client ID")
+            return
+        }
+
+        let config = GIDConfiguration(clientID: clientID)
+
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user, error in
+            if let error = error {
+                print(" Google Sign-In Error: \(error.localizedDescription)")
+                return
+            }
+
+            guard let idToken = user?.authentication.idToken,
+                  let accessToken = user?.authentication.accessToken else {
+                print(" Google Sign-In Failed: Missing tokens")
+                return
+            }
+
+            Task {
+                await googleAuthVM.loginWithGoogle(idToken: idToken, accessToken: accessToken)
+            }
+        }
+    }
+
 }
 // MARK: UITextfieldDelegate Methods
 extension LoginVC:UITextFieldDelegate{

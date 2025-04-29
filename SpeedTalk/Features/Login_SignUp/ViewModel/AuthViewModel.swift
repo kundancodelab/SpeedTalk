@@ -20,8 +20,8 @@ final class AuthViewModel {
     
     static let shared = AuthViewModel()
     
-    private let auth = Auth.auth()
-    private let firestore = Firestore.firestore()
+     let auth = Auth.auth()
+     let firestore = Firestore.firestore()
     
     var userSession: FirebaseAuth.User?
     var currentUser: UserDM?
