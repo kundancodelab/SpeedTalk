@@ -11,7 +11,7 @@ import FirebaseAuth
 import Firebase
 
 class LoginVC: UIViewController {
-    private let googleAuthVM = GoogleAuthViewModel()
+    private let googleAuthVM = GoogleAuthVM()
     @IBOutlet weak var loginBtnView: UIView!{
         didSet {
             loginBtnView.layer.cornerRadius = 8
@@ -43,6 +43,15 @@ class LoginVC: UIViewController {
     @IBAction func didTapGoogleLoginBtn(_ sender: UIButton) {
         handleGoogleLogin()
     }
+    
+    @IBAction func didTapAppleLoginBtn(_ sender: UIButton) {
+       
+    }
+    
+    @IBAction func didTapForgotPassword(_ sender: UIButton) {
+        let ForgotPasswordVC = ForgotPasswordVC.instantiate()
+        self.navigationController?.pushViewController(ForgotPasswordVC, animated: true)
+    }
 
 }
 
@@ -66,31 +75,54 @@ extension LoginVC {
         passwordTF.textContentType = .newPassword
         }
   private  func handleGoogleLogin() {
-        guard let clientID = FirebaseApp.app()?.options.clientID else {
-            print(" Missing Firebase Client ID")
-            return
-        }
-
-        let config = GIDConfiguration(clientID: clientID)
-
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user, error in
-            if let error = error {
-                print(" Google Sign-In Error: \(error.localizedDescription)")
-                return
-            }
-
-            guard let idToken = user?.authentication.idToken,
-                  let accessToken = user?.authentication.accessToken else {
-                print(" Google Sign-In Failed: Missing tokens")
-                return
-            }
-
-            Task {
-                await googleAuthVM.loginWithGoogle(idToken: idToken, accessToken: accessToken)
-            }
+      
+//        guard let clientID = FirebaseApp.app()?.options.clientID else {
+//            print(" Missing Firebase Client ID")
+//            return
+//        }
+//
+//        let config = GIDConfiguration(clientID: clientID)
+//
+//        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user, error in
+//            if let error = error {
+//                print(" Google Sign-In Error: \(error.localizedDescription)")
+//                return
+//            }
+//
+//            guard let idToken = user?.authentication.idToken,
+//                  let accessToken = user?.authentication.accessToken else {
+//                print(" Google Sign-In Failed: Missing tokens")
+//                return
+//            }
+      self.showHUD(progressLabel: "Loading...")
+      GoogleAuthVM.share.signInWithGoogle{ success, userData in
+          //Hide loder
+          self.dismissHUD(isAnimated: true)
+          if success {
+              DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                  let userID = userData?["uid"] as? String
+                  print(userID)
+                  //  Save Login Type
+                  UserDefaults.standard.set(UserDefaultKeys.shared.GoogleUsers, forKey:UserDefaultKeys.shared.loginType)
+                  //  Save UID
+                  UserDefaults.standard.set(userID, forKey: UserDefaultKeys.shared.uidKey)
+                  UserDefaults.standard.set(true, forKey: UserDefaultKeys.shared.hasCompletedOnboarding)
+                  self.navigateToHome()
+              }
+          } else {
+              print("error")
+              Utility.alertDisplay(vc: self, titleMsg: "Failed", displayMessage: "Something went wrong!", buttonLabel: "dismiss")
+          }
+      }
         }
     }
 
+//MARK: Helper Method
+extension LoginVC{
+    private func navigateToHome(){
+        let homeVC = HomeVC.instantiate()
+        self.navigationController?.pushViewController(homeVC, animated: true)
+    }
 }
 // MARK: UITextfieldDelegate Methods
 extension LoginVC:UITextFieldDelegate{

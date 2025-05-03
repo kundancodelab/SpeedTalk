@@ -2,8 +2,9 @@ import UIKit
 import SystemConfiguration
 import Foundation
 
+
 class Utility {
-    
+   
     // MARK: - Email Validation
     static func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

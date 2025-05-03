@@ -47,11 +47,11 @@ final class AppleAuthViewModel {
     // Store Apple User in Firebase under AppleUser collection
     private func storeAppleUserInFirebase(uid: String) async {
         // Here you can create a UserDM or any custom model for Apple users
-        let appleUser = UserDM(fullName: "", email: "apple@example.com", uid: uid, name: "Apple User")
+//        let appleUser = UserDM(fullName: "", email: "apple@example.com", uid: uid, name: "Apple User")
         
         do {
             // Save the user data in Firestore under AppleUser collection
-            try await authViewModel.firestore.collection("AppleUser").document(uid).setData(from: appleUser)
+//            try await authViewModel.firestore.collection("AppleUser").document(uid).setData(from: appleUser)
             
             // Optionally, save user data to UserDefaults
             UserDefaults.standard.set(uid, forKey: "appleUserUID")

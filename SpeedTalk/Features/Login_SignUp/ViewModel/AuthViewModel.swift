@@ -26,7 +26,6 @@ final class AuthViewModel {
     var userSession: FirebaseAuth.User?
     var currentUser: UserDM?
     var isError: Bool = false
-    
     var eventHandler: ((AuthState) -> Void)?
     
     init() {}
@@ -69,7 +68,7 @@ final class AuthViewModel {
     // MARK: - Store User in Firestore
     func storeUserInFirebase(uid: String, user: UserDM) async {
         do {
-            try firestore.collection("users").document(uid).setData(from: user)
+            try firestore.collection("Emailusers").document(uid).setData(from: user)
         } catch {
             isError = true
             eventHandler?(.error(error.localizedDescription))

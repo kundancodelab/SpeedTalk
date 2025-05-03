@@ -164,24 +164,37 @@ class SignUpVC: UIViewController {
 //            Utility.showAlert(title: "Life Stage Required", message: "Please select a life stage.", viewController: self)
 //            return
 //        }
-//        
-
-        // Create a new user  to store in the firebase database .
-        let newUser = UserDM(
-            fullName: name,
+//
+        let newUser = UserDataModel(
+            uid: "",
+            userName: name,
             email: email,
-            isEmailVerified: false,
             age: age,
+           // weight: weight,
+          //  gender: gender,
+          //  lifeStage: lifeStage,
             profilePicURL: nil
         )
-        Task {
-            await AuthViewModel.shared.createUser(user: newUser, email: email, password: password)
-        }
-       
+
+        // registerVM.registerUser(user: newUser, password: password, profileImage: nil)
+         self.showHUD(progressLabel: "Registering user...")
+         RegisterVM.shared.registerUser(user: newUser, password: password) { authResult   in
+             self.dismissHUD(isAnimated: true)
+             switch authResult {
+             case .success(let user) :
+                 print(user)
+                 self.navigateToHome()
+                 UserDefaults.standard.set(true, forKey: UserDefaultKeys.shared.hasCompletedOnboarding)
+             case .failure(let error):
+                 print(error.localizedDescription)
+                 Utility.showAlert(title: "Registeration Failed", message: "\(error.localizedDescription)", viewController: self)
+             }
+         }
     }
     
     @IBAction func didTapalreadyHaveAccountBtn(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        let loginVC = LoginVC.instantiate()
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
 }
 
@@ -201,6 +214,13 @@ extension SignUpVC: UITextFieldDelegate {
     }
 }
 
+extension SignUpVC {
+    private func navigateToHome() {
+        let vc = HomeVC.instantiate()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+    
 // MARK: - ViewModel Setup
 extension SignUpVC {
     func configure() {
