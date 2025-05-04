@@ -28,6 +28,7 @@ class HomeVC: UIViewController {
     
     @IBAction func didTapSideMenuBtn(_ sender: UIButton) {
         let sideMenuVC = PopOverSettingMenu.instantiate()
+        sideMenuVC.delegate = self
         sideMenuVC.modalTransitionStyle = .crossDissolve
         sideMenuVC.modalPresentationStyle = .overCurrentContext
         present(sideMenuVC, animated: true)
@@ -65,5 +66,11 @@ extension HomeVC {
 //            emailLbl.text = "Email: \(user.email)"
 //            ageLbl.text = "Age: \(user.age ?? 18)"
     
+    }
+}
+extension HomeVC: SideMenuDelegate {
+    func didSelectSettings() {
+        let settingsVC = SettingsVC.instantiate()
+        self.navigationController?.pushViewController(settingsVC, animated: true)
     }
 }

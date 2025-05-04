@@ -23,6 +23,13 @@ class ForgotPasswordVC: UIViewController {
         
     }
     
+    @IBAction func didTapBackBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func didTapBackToLoginBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func didTapforgotPasswordBtn(_ sender: UIButton) {
         guard let email = emailTF.text, !email.isEmpty else {
             Utility.alertDisplay(vc: self, titleMsg: "Invalid email ", displayMessage: "Invalid email or empty", buttonLabel: "ok")
@@ -31,8 +38,9 @@ class ForgotPasswordVC: UIViewController {
         
         self.showHUD(progressLabel: "sending...")
         RegisterVM.shared.resetPassword(email: email) { success in
+            self.dismissHUD(isAnimated: true)
             if success {
-                Utility.showToast(vc: self, message: "Successfully sent password resent link", font: .systemFont(ofSize: 12))
+                self.showToast(message: "Sent successfully", duration: 0.5 , color: .systemGray5, isTop: true)
             }else {
                 Utility.alertDisplay(vc: self, titleMsg: "Failed", displayMessage: "something went wrong, Please ensure you are entering the registered email", buttonLabel: "ok")
             }

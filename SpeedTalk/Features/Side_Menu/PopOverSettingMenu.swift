@@ -6,11 +6,14 @@
 
 
 import UIKit
+protocol SideMenuDelegate: AnyObject {
+    func didSelectSettings()
+}
 
 class PopOverSettingMenu: UIViewController {
     @IBOutlet weak var sideMenuView: UIView!
     @IBOutlet weak var containerView: UIView!
-    
+    weak var delegate: SideMenuDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         containerView.layer.cornerRadius = 10
@@ -25,5 +28,11 @@ class PopOverSettingMenu: UIViewController {
         print("Yes we are  tapping.")
         dismiss(animated: true)
       }
+    
+    @IBAction func didTapSettingBtn(_ sender : UIButton) {
+        self.dismiss(animated: true) {
+              self.delegate?.didSelectSettings()
+          }
+    }
   
 }

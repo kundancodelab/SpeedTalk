@@ -47,6 +47,22 @@ class LoginVC: UIViewController {
     @IBAction func didTapAppleLoginBtn(_ sender: UIButton) {
        
     }
+    @IBAction func didTapLoginBtn(_ sender: UIButton ) {
+        self.showHUD(progressLabel: "Logining...")
+        print("userName:", emailTF.text! , "Password:", passwordTF.text!)
+        RegisterVM.shared.loginUser(email: emailTF.text!, password: passwordTF.text!) { success in
+            self.dismissHUD(isAnimated: true)
+            if success {
+                self.showToast(message: "Login successfully", duration: 1.0, color: .systemGreen.withAlphaComponent(0.4), isTop: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.navigateToHome()
+                }
+            }else {
+             
+                Utility.showAlert(title: "Login Failed", message: RegisterVM.shared.errorMessage ?? "Something went wrong ", viewController: self)
+            }
+        }
+    }
     
     @IBAction func didTapForgotPassword(_ sender: UIButton) {
         let ForgotPasswordVC = ForgotPasswordVC.instantiate()

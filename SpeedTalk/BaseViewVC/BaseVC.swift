@@ -70,6 +70,7 @@ class BaseVC: UIViewController {
     
     
     //MARK: show Tost Message....
+    /*
     func showToast(message: String, duration: Double, color: UIColor, isTop: Bool) {
         let toastView = UIView()
         toastView.backgroundColor = color
@@ -130,7 +131,7 @@ class BaseVC: UIViewController {
             }
         }
     }
-    
+    */
     
     //MARK: Shake animation....
     func shakeAnimation(view: UIView){

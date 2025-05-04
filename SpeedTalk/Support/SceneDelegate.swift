@@ -12,29 +12,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-           // Initialize window properly
-           let newWindow = UIWindow(windowScene: windowScene)
-           self.window = newWindow
-           // Determine initial view controller
-           let rootVC: UIViewController
-           
-        if UserDefaultKeys.shared.shouldShowLoginScreen() {
-               // Instantiate language selection screen from storyboard safely
-               let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            rootVC = storyboard.instantiateViewController(withIdentifier: VCIdentifiers.shared.LoginVC) as! LoginVC
-           } else {
-               // Instantiate home screen from storyboard safely
-               let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               rootVC = storyboard.instantiateViewController(withIdentifier: VCIdentifiers.shared.HomeVC) as! HomeVC
+        func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+               // Initialize window properly
+               let newWindow = UIWindow(windowScene: windowScene)
+               self.window = newWindow
+               // Determine initial view controller
+               let rootVC: UIViewController
+               
+            if UserDefaultKeys.shared.shouldShowLoginScreen() {
+                   // Instantiate language selection screen from storyboard safely
+                   let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                rootVC = storyboard.instantiateViewController(withIdentifier: VCIdentifiers.shared.LoginVC) as! LoginVC
+               } else {
+                   // Instantiate home screen from storyboard safely
+                   let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                   rootVC = storyboard.instantiateViewController(withIdentifier: VCIdentifiers.shared.HomeVC) as! HomeVC
 
-           }
-           // Set root view controller
-           newWindow.rootViewController = rootVC
-           newWindow.makeKeyAndVisible()
+               }
+            let navController = UINavigationController(rootViewController: rootVC)
+                newWindow.rootViewController = navController
+                newWindow.makeKeyAndVisible()
 
-    }
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
