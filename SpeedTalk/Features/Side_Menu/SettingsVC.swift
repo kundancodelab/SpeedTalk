@@ -11,7 +11,7 @@ class SettingsVC: UIViewController {
 
     @IBOutlet weak var tableView:UITableView!
     var arr_DM_1:[(String, String)] = [("", "")]
-    var arr_DM_2:[(String, String)] = [("","")]
+    var arr_DM_2:[SideMenuDM?] = [nil]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView(tableView)
@@ -76,6 +76,7 @@ extension SettingsVC {
           headerView.onQRCodeTapped = { [weak self] in
               print(" QR Code tapped from VC")
               // Add your navigation or logic
+              
           }
 
           headerView.onAddAccountTapped = { [weak self] in
@@ -97,17 +98,16 @@ extension SettingsVC {
         ]
         
         arr_DM_2  = [
-            ("", "Account"),
-            ("", "Privacy"),
-            ("", "Avatar"),
-            ("", "List"),
-            ("", "Chats"),
-            ("", "Notification"),
-            ("", "Storage and data"),
-            ("", "App Language"),
-            ("", "Help"),
-            ("", "Invite a friend"),
-            ("", "App Updates")
+            SideMenuDM(icon: "", title: "Account", subtitle: ""),
+            SideMenuDM(icon: "", title: "Privacy", subtitle: ""),
+            SideMenuDM(icon: "", title: "Notification", subtitle: ""),
+            SideMenuDM(icon: "", title: "Chats", subtitle: ""),
+            SideMenuDM(icon: "", title: "Storage and data", subtitle: ""),
+            SideMenuDM(icon: "", title: "", subtitle: ""),
+            SideMenuDM(icon: "", title: "", subtitle: ""),
+            SideMenuDM(icon: "", title: "", subtitle: ""),
+            SideMenuDM(icon: "", title: "", subtitle: ""),
+            SideMenuDM(icon: "", title: "", subtitle: ""),
            
         ]
     }
@@ -130,6 +130,9 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
         var cell = UITableViewCell()
         if indexPath.section == 0 {
             let cell1 = self.tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SettingCell
+            if  let data = arr_DM_2[indexPath.row] {
+                cell1.configureCell(with: data)
+            }
             cell = cell1
            
         }else {

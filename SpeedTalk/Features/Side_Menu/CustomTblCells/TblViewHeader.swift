@@ -54,12 +54,12 @@ class TblViewHeader: UIView {
 
     // MARK: - Actions
     @objc private func qrcodeImgTapped() {
-        print("QR Code image tapped.")
+       
         onQRCodeTapped?()
     }
 
     @objc private func addAccountImgTapped() {
-        print("Add Account image tapped.")
+       
         onAddAccountTapped?()
     }
 }

@@ -21,8 +21,10 @@ class SettingCell: UITableViewCell {
 
     }
     
-    func configureCell(with data:(String, String)) {
-        
+    func configureCell(with data:SideMenuDM) {
+        imgView.image =  UIImage(named: data.icon)
+        lblTitle.text = data.title
+        subTitleLbl.text = data.subtitle
     }
     
 }

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+struct SideMenuDM {
+    let icon:String
+    let title:String
+    let subtitle:String
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DAn-P9-6ur">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GPn-ls-Mk4">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -449,25 +449,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full name: Kundan Kumar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O7-xI-ZU5">
-                                <rect key="frame" x="16" y="61" width="193" height="21"/>
+                                <rect key="frame" x="16" y="105" width="193" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email : kundan@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pza-dS-pzc">
-                                <rect key="frame" x="16" y="103" width="204" height="21"/>
+                                <rect key="frame" x="16" y="147" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age:28" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-mj-lPv">
-                                <rect key="frame" x="16" y="144" width="55" height="21"/>
+                                <rect key="frame" x="16" y="188" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Of-Qh-hgu">
-                                <rect key="frame" x="284" y="24" width="28" height="28"/>
+                                <rect key="frame" x="284" y="68" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="S05-QO-yuP"/>
                                     <constraint firstAttribute="width" constant="28" id="ySz-bB-VgJ"/>
@@ -494,6 +494,7 @@
                             <constraint firstItem="3O7-xI-ZU5" firstAttribute="leading" secondItem="LKi-FP-FwI" secondAttribute="leading" constant="16" id="v9N-gc-YqT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="EYJ-JA-HmS"/>
                     <connections>
                         <outlet property="ageLbl" destination="X8R-mj-lPv" id="JmT-2X-KG1"/>
                         <outlet property="emailLbl" destination="Pza-dS-pzc" id="mBb-Sw-i5H"/>
@@ -502,7 +503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XnK-G5-uGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1590" y="1058"/>
+            <point key="canvasLocation" x="2587.5" y="1057.3943661971832"/>
         </scene>
         <!--Pop Over Setting Menu-->
         <scene sceneID="20B-ds-DxE">
@@ -591,7 +592,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5K-Pn-n0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2251.875" y="1055.2816901408451"/>
+            <point key="canvasLocation" x="3249.375" y="1055.2816901408451"/>
         </scene>
         <!--SettingsVC-->
         <scene sceneID="aVY-jz-fPA">
@@ -682,7 +683,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bM1-Qa-jYo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2992.5" y="1056.338028169014"/>
+            <point key="canvasLocation" x="3990" y="1055.2816901408451"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="7Vr-54-qnn">
@@ -1260,6 +1261,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybo-nH-CNC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4464.375" y="-25.35211267605634"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y6I-cS-ccn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GPn-ls-Mk4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N4w-dK-ASV">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dC4-Ph-UqK" kind="relationship" relationship="rootViewController" id="AaW-In-n6K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7L-d1-BDx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1590" y="1057.3943661971832"/>
         </scene>
     </scenes>
     <resources>
