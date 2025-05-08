@@ -10,6 +10,9 @@ import UIKit
 class footerCellTableViewCell: UITableViewCell {
     @IBOutlet weak var containerCell: UIView!
     @IBOutlet weak var img:UIImageView!
+    @IBOutlet weak var imgFacebook:UIImageView!
+    @IBOutlet weak var imgThreads:UIImageView!
+    @IBOutlet weak var imgMetaAiApp:UIImageView!
     @IBOutlet weak var lblTitle:UILabel!
     
     // callback clouser
@@ -29,9 +32,15 @@ class footerCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(with data: (String, String)) {
-        img.image = UIImage(named: data.0)
-        lblTitle.text =  data.1
+    func configureCell(with data: [(String, String)]) {
+        img.image = UIImage(named: data[0].0)
+        lblTitle.text =  data[0].1
+        imgFacebook.image = UIImage(named: data[1].0)
+        lblTitle.text = data[1].1
+        imgThreads.image = UIImage(named: data[2].0)
+        lblTitle.text = data[2].1
+        imgMetaAiApp.image = UIImage(named: data[3].0)
+        lblTitle.text = data[3].1
     }
     
 }

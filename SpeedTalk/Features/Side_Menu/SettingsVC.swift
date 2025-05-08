@@ -14,6 +14,7 @@ class SettingsVC: UIViewController {
     var arr_DM_2:[SideMenuDM?] = [nil]
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadStaticData()
         setupTableView(tableView)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -98,16 +99,18 @@ extension SettingsVC {
         ]
         
         arr_DM_2  = [
-            SideMenuDM(icon: "", title: "Account", subtitle: ""),
-            SideMenuDM(icon: "", title: "Privacy", subtitle: ""),
-            SideMenuDM(icon: "", title: "Notification", subtitle: ""),
-            SideMenuDM(icon: "", title: "Chats", subtitle: ""),
-            SideMenuDM(icon: "", title: "Storage and data", subtitle: ""),
-            SideMenuDM(icon: "", title: "", subtitle: ""),
-            SideMenuDM(icon: "", title: "", subtitle: ""),
-            SideMenuDM(icon: "", title: "", subtitle: ""),
-            SideMenuDM(icon: "", title: "", subtitle: ""),
-            SideMenuDM(icon: "", title: "", subtitle: ""),
+            SideMenuDM(icon: "key", title: "Account", subtitle: "Security notifications,change number"),
+            SideMenuDM(icon: "padlock", title: "Privacy", subtitle: "Block con tacts , disappearing messages"),
+            SideMenuDM(icon: "hair-style", title: "Avatar", subtitle: "Create, edit,profile photo"),
+            SideMenuDM(icon: "people", title: "Lists", subtitle: "A Manage people and grups"),
+            SideMenuDM(icon: "chat", title: "Chats", subtitle: "Theme, wallpapers , chat history"),
+            SideMenuDM(icon: "notification-bell", title: "Notifications", subtitle: "Message , group & call tones"),
+            SideMenuDM(icon: "", title: "Storage and data", subtitle: "Network usage, auto downloaded"),
+            SideMenuDM(icon: "globe-earth", title: "App Language", subtitle: "English(devices' language)"),
+            SideMenuDM(icon: "question", title: "Help", subtitle: "Help center, contact us, privacy policy"),
+            SideMenuDM(icon: "people", title: "Inviate a contact", subtitle: ""),
+            SideMenuDM(icon: "mobile-phone", title: "App updates", subtitle: "")
+            
            
         ]
     }
@@ -121,7 +124,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
         if section == 0 {
             return arr_DM_2.count
         }else {
-            return arr_DM_1.count
+            return 1
         }
       
     }
@@ -138,7 +141,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
         }else {
             let cell2 = self.tableView.dequeueReusableCell(withIdentifier: "footerCellTableViewCell", for: indexPath) as! footerCellTableViewCell
             let data = arr_DM_1[indexPath.row]
-            cell2.configureCell(with:data)
+            cell2.configureCell(with:arr_DM_1)
             cell = cell2
         }
         cell.backgroundColor = UIColor.clear
@@ -149,7 +152,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == 0 {
             return 80
         }else {
-            return 50
+            return 220
         }
       
     }
