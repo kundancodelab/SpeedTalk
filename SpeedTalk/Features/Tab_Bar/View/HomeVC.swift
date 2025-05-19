@@ -8,12 +8,19 @@
 import UIKit
 @MainActor
 class HomeVC: UIViewController {
+    // lables
     @IBOutlet weak var nameLbl:UILabel!
     @IBOutlet weak var emailLbl:UILabel!
     @IBOutlet weak var ageLbl:UILabel!
+    // TableView
+    @IBOutlet weak var tblView:UITableView!
+    // Button
+    @IBOutlet weak var sideMenuBtn:UIButton!
+    
     var userData:[String:Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         loadUserData()
         setupUI()
     }
@@ -33,8 +40,20 @@ class HomeVC: UIViewController {
         sideMenuVC.modalPresentationStyle = .overCurrentContext
         present(sideMenuVC, animated: true)
     }
+    //MARK--> SetupTableView
+    private func setupTableView() {
+        tblView.delegate = self
+        tblView.dataSource = self
+        tblView.showsVerticalScrollIndicator = false
+        tblView.showsVerticalScrollIndicator = false
+        tblView.separatorStyle = .none
+        tblView.backgroundColor = .clear
+        tblView.register(UINib(nibName: "HomeCell", bundle: nil), forCellReuseIdentifier: "HomeCell")
+    }
+    
    
 }
+
 // MARK: Helper methods
 extension HomeVC {
     private func loadCurrentUserData() {
@@ -61,15 +80,33 @@ extension HomeVC {
         }
     }
     private func setupUI(){
-       
-//            nameLbl.text = "Full Name: \(userData.fullName)"
-//            emailLbl.text = "Email: \(user.email)"
-//            ageLbl.text = "Age: \(user.age ?? 18)"
+        sideMenuBtn.setImage(UIImage(named: "main-menu"), for: .normal)
     
     }
 }
+
+// MARK--> TableViewDelegate and Datasources
+extension HomeVC : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        let cell = tblView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+}
+
+// MARK--> Cinfirming sideMenuNavigatationDelegate
 extension HomeVC: SideMenuDelegate {
-    func didSelectSettings() {
+     func didSelectSettings() {
         let settingsVC = SettingsVC.instantiate()
         self.navigationController?.pushViewController(settingsVC, animated: true)
     }
