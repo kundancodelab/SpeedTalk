@@ -27,7 +27,7 @@ class SettingsVC: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupTableHeader()
+        
     }
     
 //    override func viewWillLayoutSubviews() {
@@ -51,10 +51,12 @@ extension SettingsVC {
     private func setupTableView(_ tableView:UITableView){
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.register(UINib(nibName: "tblHeaderCell", bundle: nil), forCellReuseIdentifier: "tblHeaderCell")
         tableView.register(UINib(nibName: "SettingCell", bundle: nil), forCellReuseIdentifier: "SettingCell")
         tableView.register(UINib(nibName: "footerCellTableViewCell", bundle: nil), forCellReuseIdentifier: "footerCellTableViewCell")
-        // Register Header View
-        tableView.register(UINib(nibName: "TblViewHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "TblViewHeader")
+       
+        
         
         tableView.backgroundColor = UIColor.clear
         tableView.showsVerticalScrollIndicator = false
@@ -63,33 +65,7 @@ extension SettingsVC {
         
         tableView.reloadData()
       }
-      private func setupTableHeader() {
-          guard let headerView = Bundle.main.loadNibNamed("TblViewHeader", owner: nil, options: nil)?.first as? TblViewHeader else {
-              print(" Failed to load TblViewHeader")
-              return
-          }
-        
-          headerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 80)
-          // Force layout to ensure the header size is correct
-              headerView.setNeedsLayout()
-              headerView.layoutIfNeeded()
-
-          headerView.onQRCodeTapped = { [weak self] in
-              print(" QR Code tapped from VC")
-              // Add your navigation or logic
-              
-          }
-
-          headerView.onAddAccountTapped = { [weak self] in
-              print(" Add Account tapped from VC")
-              // Add your navigation or logic
-          }
-
-          tableView.tableHeaderView = headerView
-          // This forces the table view to update its layout properly
-          tableView.layoutIfNeeded()
-          tableView.reloadData()
-      }
+   
     private func loadStaticData() {
         arr_DM_1 = [
             ("instagram", "Open Instagram"),
@@ -118,10 +94,12 @@ extension SettingsVC {
 // MARK: UITableView Datasource and Delegate Methods
 extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section ==  0 {
+            return 1
+        }else  if section == 1 {
             return arr_DM_2.count
         }else {
             return 1
@@ -132,29 +110,51 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if indexPath.section == 0 {
-            let cell1 = self.tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SettingCell
-            if  let data = arr_DM_2[indexPath.row] {
-                cell1.configureCell(with: data)
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "tblHeaderCell", for: indexPath) as! tblHeaderCell
+            cell1.onQRCodeTapped = { [weak self] in
+                guard self != nil else {return}
             }
-            cell = cell1
+            cell1.onAddAccountTapped = { [weak self] in
+                guard self != nil else {return}
+            }
+        
            
-        }else {
-            let cell2 = self.tableView.dequeueReusableCell(withIdentifier: "footerCellTableViewCell", for: indexPath) as! footerCellTableViewCell
-            let data = arr_DM_1[indexPath.row]
-            cell2.configureCell(with:arr_DM_1)
+        }else  if indexPath.section == 1 {
+            
+            let cell2 = self.tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SettingCell
+            if  let data = arr_DM_2[indexPath.row] {
+                cell2.configureCell(with: data)
+            }
             cell = cell2
+            
+        }else {
+           
+            let cell3 = self.tableView.dequeueReusableCell(withIdentifier: "footerCellTableViewCell", for: indexPath) as! footerCellTableViewCell
+            let data = arr_DM_1[indexPath.row]
+            cell3.configureCell(with:arr_DM_1)
+            cell = cell3
         }
+        cell.selectionStyle = .none
         cell.backgroundColor = UIColor.clear
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
+            return 100
+        }else if indexPath.section == 1 {
             return 80
         }else {
             return 220
         }
       
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let profileVC = ProfileVC.instantiate()
+            self.navigationController?.pushViewController(profileVC, animated: true)
+        }
     }
     
 }

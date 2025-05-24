@@ -1,4 +1,10 @@
 //
+//  tblHeaderCell.swift
+//  SpeedTalk
+//
+//  Created by User on 25/05/25.
+//
+//
 //  TblViewHeader.swift
 //  SpeedTalk
 //
@@ -7,7 +13,7 @@
 
 import UIKit
 
-class TblViewHeader: UIView {
+class tblHeaderCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var bioLbl: UILabel!
@@ -23,6 +29,11 @@ class TblViewHeader: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
     }
 
     // MARK: - Setup
@@ -63,3 +74,4 @@ class TblViewHeader: UIView {
         onAddAccountTapped?()
     }
 }
+
