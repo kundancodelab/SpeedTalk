@@ -17,6 +17,25 @@ class HomeVC: UIViewController {
     // Button
     @IBOutlet weak var sideMenuBtn:UIButton!
     
+    @IBOutlet weak var metaAiOverlayView: UIView!{
+        didSet{
+            metaAiOverlayView.layer.cornerRadius = 10
+            metaAiOverlayView.layer.masksToBounds = true
+            metaAiOverlayView.layer.shadowColor = UIColor.black.cgColor
+            metaAiOverlayView.layer.shadowOpacity = 0.5
+            metaAiOverlayView.layer.shadowRadius = 5
+        }
+    }
+    @IBOutlet weak var addMemberOverlayView: UIView!{
+        didSet{
+            addMemberOverlayView.layer.cornerRadius = 10
+            addMemberOverlayView.layer.masksToBounds = true
+            addMemberOverlayView.layer.shadowColor = UIColor.black.cgColor
+            addMemberOverlayView.layer.shadowOpacity = 0.5
+            addMemberOverlayView.layer.shadowRadius = 5
+        }
+    }
+    
     var userData:[String:Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +68,7 @@ class HomeVC: UIViewController {
         tblView.separatorStyle = .none
         tblView.backgroundColor = .clear
         tblView.register(UINib(nibName: "HomeCell", bundle: nil), forCellReuseIdentifier: "HomeCell")
+        tblView.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
     }
     
    
@@ -87,26 +107,50 @@ extension HomeVC {
 
 // MARK--> TableViewDelegate and Datasources
 extension HomeVC : UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        switch section {
+        case 0 :
+            return 1
+        default:
+            return 12
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell =  UITableViewCell()
+        if indexPath.section == 0 {
+            let cell1 = tblView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchCell
+           
+            cell = cell1
+        }else {
+            let cell2 = tblView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
+            cell = cell2
+        }
        
-        let cell = tblView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        if indexPath.section == 0  {
+            // for search bar
+            return 60
+        }else {
+            return 70
+        }
+      
     }
 }
 
 // MARK--> Cinfirming sideMenuNavigatationDelegate
 extension HomeVC: SideMenuDelegate {
      func didSelectSettings() {
+         print("Selected Settings VC ")
         let settingsVC = SettingsVC.instantiate()
         self.navigationController?.pushViewController(settingsVC, animated: true)
     }
