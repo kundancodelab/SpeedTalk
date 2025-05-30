@@ -135,9 +135,17 @@ extension LoginVC {
 
 //MARK: Helper Method
 extension LoginVC{
-    private func navigateToHome(){
-        let homeVC = HomeVC.instantiate()
-        self.navigationController?.pushViewController(homeVC, animated: true)
+    private func navigateToHome() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
+        // For custom UITabBarController Class.
+//        let mainTabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
+
+
+        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+            sceneDelegate.window?.rootViewController = mainTabBarVC
+            sceneDelegate.window?.makeKeyAndVisible()
+        }
     }
 }
 // MARK: UITextfieldDelegate Methods

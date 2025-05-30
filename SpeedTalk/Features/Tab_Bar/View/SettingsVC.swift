@@ -152,8 +152,12 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let profileVC = ProfileVC.instantiate()
-            self.navigationController?.pushViewController(profileVC, animated: true)
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.animateWithBounceFadeAndBackground {
+                let profileVC = ProfileVC.instantiate()
+                self.navigationController?.pushViewController(profileVC, animated: true)
+            }
+         
         }
     }
     

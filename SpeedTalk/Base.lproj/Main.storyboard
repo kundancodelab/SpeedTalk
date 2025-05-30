@@ -465,8 +465,8 @@
                                             <action selector="didTapSideMenuBtn:" destination="dC4-Ph-UqK" eventType="touchUpInside" id="giP-EM-Mdn"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhatsApp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-g2-tr5">
-                                        <rect key="frame" x="12" y="-0.5" width="125" height="31.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SpeedTalk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-g2-tr5">
+                                        <rect key="frame" x="12" y="-0.5" width="123" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                                         <color key="textColor" systemColor="systemBrownColor"/>
                                         <nil key="highlightedColor"/>
@@ -815,7 +815,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="camera.circle.fill" catalog="system"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="V0E-Rp-nqd">
-                                <rect key="frame" x="16" y="224" width="343" height="272"/>
+                                <rect key="frame" x="16" y="224" width="343" height="346"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfO-3H-lNs">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -925,8 +925,44 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oUl-Mj-xGe" secondAttribute="trailing" constant="111.5" id="zVb-yR-G9h"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ctr-JK-s6S">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ota-Gg-aze">
                                         <rect key="frame" x="0.0" y="222" width="343" height="50"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="J9E-AK-kMa">
+                                                <rect key="frame" x="0.0" y="11.5" width="30" height="26.5"/>
+                                                <color key="tintColor" name="757677"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Srs-w9-W3b"/>
+                                                    <constraint firstAttribute="width" constant="30" id="gJX-3f-tmo"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSj-Yp-neH">
+                                                <rect key="frame" x="46" y="3" width="43" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="johndon@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIY-Cz-39h">
+                                                <rect key="frame" x="45" y="24.5" width="155" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="gIY-Cz-39h" firstAttribute="leading" secondItem="J9E-AK-kMa" secondAttribute="trailing" constant="15" id="1qB-UZ-d68"/>
+                                            <constraint firstItem="gIY-Cz-39h" firstAttribute="top" secondItem="HSj-Yp-neH" secondAttribute="bottom" constant="2" id="9uo-3M-SWN"/>
+                                            <constraint firstAttribute="height" constant="50" id="C38-zh-DgW"/>
+                                            <constraint firstItem="J9E-AK-kMa" firstAttribute="leading" secondItem="ota-Gg-aze" secondAttribute="leading" id="I3F-Eu-zLV"/>
+                                            <constraint firstItem="HSj-Yp-neH" firstAttribute="leading" secondItem="J9E-AK-kMa" secondAttribute="trailing" constant="16" id="pZ6-Xv-msp"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gIY-Cz-39h" secondAttribute="trailing" constant="111.5" id="tIF-be-Ewh"/>
+                                            <constraint firstItem="HSj-Yp-neH" firstAttribute="centerY" secondItem="ota-Gg-aze" secondAttribute="centerY" multiplier="0.5" id="u6a-bG-bRj"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HSj-Yp-neH" secondAttribute="trailing" constant="20" symbolic="YES" id="x1r-HO-avd"/>
+                                            <constraint firstItem="J9E-AK-kMa" firstAttribute="centerY" secondItem="ota-Gg-aze" secondAttribute="centerY" id="xeR-2C-XHe"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ctr-JK-s6S">
+                                        <rect key="frame" x="0.0" y="296" width="343" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone.and.arrow.forward.outward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wYm-dW-U6Y">
                                                 <rect key="frame" x="0.0" y="10" width="32" height="30"/>
@@ -971,6 +1007,19 @@
                             <constraint firstItem="pks-58-TA7" firstAttribute="centerX" secondItem="iPI-Vk-05R" secondAttribute="centerX" multiplier="1.2" id="v38-Qm-mk9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aboutLabel" destination="3h5-Of-fZj" id="IUa-mo-WYt"/>
+                        <outlet property="aboutView" destination="lN8-Ns-cDI" id="lW5-V6-q8y"/>
+                        <outlet property="cameraImageBtn" destination="pks-58-TA7" id="tuf-qY-Pxt"/>
+                        <outlet property="emailLabel" destination="gIY-Cz-39h" id="7xt-fW-80I"/>
+                        <outlet property="emailView" destination="ota-Gg-aze" id="F2M-H0-ge2"/>
+                        <outlet property="logoutView" destination="Ctr-JK-s6S" id="AJR-FK-HYL"/>
+                        <outlet property="nameLabel" destination="VqC-k3-1w2" id="bVf-9D-3RI"/>
+                        <outlet property="nameView" destination="JfO-3H-lNs" id="Yzd-5S-2SQ"/>
+                        <outlet property="phoneLabel" destination="oUl-Mj-xGe" id="N0P-6M-paW"/>
+                        <outlet property="phoneView" destination="IK4-Vd-gjx" id="Jz5-6b-OVd"/>
+                        <outlet property="profileImage" destination="Wgh-hk-4aB" id="hNp-6Y-eAS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRC-iV-qBC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1652,6 +1701,7 @@
         <image name="chevron.left.circle" catalog="system" width="128" height="123"/>
         <image name="community" width="31" height="31"/>
         <image name="ellipsis.vertical" width="128" height="128"/>
+        <image name="envelope.fill" catalog="system" width="128" height="85"/>
         <image name="exclamationmark.circle" catalog="system" width="128" height="123"/>
         <image name="google" width="512" height="512"/>
         <image name="iphone.and.arrow.forward.outward" catalog="system" width="125" height="128"/>

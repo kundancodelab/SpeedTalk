@@ -28,11 +28,11 @@ extension UIViewController {
                 progressHUD.label.text = progressLabel
             }
         }
-       func dismissHUD(isAnimated:Bool){
-            DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.view, animated: isAnimated)
-            }
+    func dismissHUD(isAnimated:Bool){
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: isAnimated)
         }
+    }
     func showToast(message: String, duration: Double, color: UIColor, isTop: Bool) {
         let toastView = UIView()
         toastView.backgroundColor = color
